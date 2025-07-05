@@ -59,5 +59,35 @@ app.post("/api/contact", async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 3000
+app.get("/", (req, res) => {
+    res.send(`
+    <div style="font-family: 'Segoe UI', sans-serif; padding: 2rem; background-color: #0F2C5F; color: white;">
+      <h1 style="font-size: 2.5rem; color: #3B82F6;">🚀 Portfolio Backend API</h1>
+      <p>Welcome to the backend service for <strong>FerdHDev's portfolio</strong>.</p>
+      
+      <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #3B82F6;" />
+
+      <h2 style="font-size: 1.5rem;">📫 Contact Endpoint</h2>
+      <p>POST your contact form data to:</p>
+      <code style="display: inline-block; padding: 0.5rem 1rem; background-color: #1E40AF; border-radius: 5px;">
+        (coming soon)
+      </code>
+
+      <h3 style="margin-top: 2rem;">📌 Example Payload (JSON)</h3>
+      <pre style="background-color: #1E3A8A; padding: 1rem; border-radius: 6px;">
+{
+  "name": "FerdH Dev",
+  "email": "ferdh@example.com",
+  "message": "Hello, I'd like to connect!"
+}
+      </pre>
+
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: #ccc;">
+        Proudly powered by Node.js, Express & Nodemailer 💌
+      </p>
+    </div>
+  `);
+});
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("Server running"))
