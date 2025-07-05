@@ -163,13 +163,34 @@
         <h2>Contact Me</h2>
         <p>Got a project in mind or just want to say hello? Feel free to reach out!</p>
 
-        <form class="contact-form" action="https://portfolio-contact-backend-314z.onrender.com" method="post">
+        <form class="contact-form" action="https://portfolio-contact-backend-314z.onrender.com/api/contact"
+            method="post">
             <input type="text" name="name" placeholder="Your Name" name="userName" required />
             <input type="email" name="email" placeholder="Your Email" name="userEmail" required />
             <textarea name="message" placeholder="Your Message" rows="6" name="userMessage" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-brand">© 2025 Obob Dev. All rights reserved.</p>
+
+            <div class="footer-socials">
+                <a href="https://github.com/obob-dev" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github" href="https://github.com/FerdHDev"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="X">
+                    <i class="fab fa-x-twitter" href="https://x.com/FerdHDevCalm?t=Yde6xIrossRbdw5qPiDYwA&s=09></i>
+                </a>
+                <a href=" #" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+
+            <button onclick="scrollToTop()" class="back-to-top">↑ Back to top</button>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
@@ -199,6 +220,10 @@
         sr.reveal('.project-card', {interval: 100});
         sr.reveal('.tech-icon', {origin: 'top', interval: 75});
         sr.reveal('.testimonial-card', {origin: 'left', interval: 100});
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
     </script>
     </body>
 
