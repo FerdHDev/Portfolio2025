@@ -11,7 +11,7 @@ app.use(cors());
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        email: process.env.EMAIL,
+        user: process.env.EMAIL,
         pass: process.env.PASS
     }
 });
@@ -57,12 +57,12 @@ app.post("/api/contact", async (req, res) => {
                 console.log("✅ Transporter is ready to send emails");
             }
         });
-        /*   await transporter.sendMail({
-               from: `"Portfolio Contact" <${process.env.EMAIL}>`,
-               to: process.env.EMAIL,
-               subject: `New message from ${name}`,
-               html: emailContent
-           }); */
+        await transporter.sendMail({
+            from: `"Portfolio Contact" <${process.env.EMAIL}>`,
+            to: process.env.EMAIL,
+            subject: `New message from ${name}`,
+            html: emailContent
+        });
 
         res.status(200).json({ message: "Email sent successfully!" });
     } catch (err) {
