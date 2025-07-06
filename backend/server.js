@@ -45,6 +45,9 @@ app.post("/api/contact", async (req, res) => {
         </table>
       `;
 
+    console.log("📨 Email:", process.env.EMAIL ? "EMAIL found ✅" : "EMAIL missing ❌");
+    console.log("🔐 Pass:", process.env.PASS ? "PASS found ✅" : "PASS missing ❌");
+
     try {
         await transporter.sendMail({
             from: `"Portfolio Contact" <${process.env.EMAIL}>`,
