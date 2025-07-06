@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 
 const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    service: "gmail",
     auth: {
         email: process.env.EMAIL,
         pass: process.env.PASS
