@@ -16,6 +16,14 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+transporter.verify((error, success) => {
+    if (error) {
+        console.error("❌ Transporter verification failed:", error);
+    } else {
+        console.log("✅ Transporter is ready to send emails");
+    }
+});
+
 app.post("/api/contact", async (req, res) => {
 
     const { name, email, message } = req.body;
