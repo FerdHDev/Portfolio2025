@@ -16,14 +16,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-transporter.verify((error, success) => {
-    if (error) {
-        console.log("❌ Transporter verification failed:", error);
-    } else {
-        console.log("✅ Transporter is ready to send emails");
-    }
-});
-
 app.post("/api/contact", async (req, res) => {
 
     const { name, email, message } = req.body;
@@ -58,12 +50,19 @@ app.post("/api/contact", async (req, res) => {
 
     try {
         console.log("Sending with:", transporter.options.auth);
-        await transporter.sendMail({
-            from: `"Portfolio Contact" <${process.env.EMAIL}>`,
-            to: process.env.EMAIL,
-            subject: `New message from ${name}`,
-            html: emailContent
+        await transporter.verify((error, success) => {
+            if (error) {
+                console.error("❌ Transporter verification failed:", error);
+            } else {
+                console.log("✅ Transporter is ready to send emails");
+            }
         });
+        /*   await transporter.sendMail({
+               from: `"Portfolio Contact" <${process.env.EMAIL}>`,
+               to: process.env.EMAIL,
+               subject: `New message from ${name}`,
+               html: emailContent
+           }); */
 
         res.status(200).json({ message: "Email sent successfully!" });
     } catch (err) {
