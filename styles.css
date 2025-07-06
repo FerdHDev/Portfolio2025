@@ -57,20 +57,18 @@ body {
 /* NAVBAR */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--color-background-dark);
+    background-image: linear-gradient(to left, var(--color-background-dark), var(--color-primary-500));
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    height: 40px;
-}
-
-.fa-bars {
-    font-size: 1.5rem;
-    color: var(--color-text-white);
-    cursor: pointer;
+    height: 100px;
+    width: 100px;
 }
 
 /* HERO SECTION */
@@ -382,6 +380,11 @@ nav {
     color: var(--color-neutral-500);
 }
 
+.contact-form input:active,
+.contact-form textarea:active {
+    color: var(--color-text-white);
+}
+
 .contact-form button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -450,4 +453,119 @@ nav {
     background-color: var(--color-primary-500);
     color: var(--color-text-white);
     border-color: var(--color-primary-600);
+}
+
+
+
+
+/* 🔹 Phones - including Kiwi */
+@media (max-width: 430px) {
+    body {
+        font-size: 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .back-to-top {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .heroImage {
+        max-width: 300px;
+    }
+}
+
+/* 🔹 Tablets */
+@media (min-width: 431px) and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* 🔹 Desktops */
+@media (min-width: 1024px) {
+    body {
+        font-size: 17px;
+    }
+}
+
+.projects-coming-soon {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-white);
+    padding: 4rem 2rem;
+    text-align: center;
+    font-family: var(--font-primary);
+    border-top: 1px solid var(--color-primary-800);
+}
+
+.projects-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.projects-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-400);
+}
+
+.projects-subtext {
+    font-size: 1rem;
+    color: var(--color-neutral-300);
+    margin-bottom: 2rem;
+}
+
+/* Animated loader dots */
+.loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 20px;
+}
+
+.loader::before,
+.loader::after,
+.loader {
+    content: '.';
+    animation: blink 1s infinite steps(1);
+    font-size: 2rem;
+    color: var(--color-accent);
+    position: absolute;
+}
+
+.loader::before {
+    left: -20px;
+    animation-delay: 0s;
+}
+
+.loader {
+    left: 0;
+    animation-delay: 0.2s;
+}
+
+.loader::after {
+    left: 20px;
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
