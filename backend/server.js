@@ -45,18 +45,8 @@ app.post("/api/contact", async (req, res) => {
         </table>
       `;
 
-    console.log("📨 Email:", process.env.EMAIL ? "EMAIL found ✅" : "EMAIL missing ❌");
-    console.log("🔐 Pass:", process.env.PASS ? "PASS found ✅" : "PASS missing ❌");
 
     try {
-        console.log("Sending with:", transporter.options.auth);
-        await transporter.verify((error, success) => {
-            if (error) {
-                console.error("❌ Transporter verification failed:", error);
-            } else {
-                console.log("✅ Transporter is ready to send emails");
-            }
-        });
         await transporter.sendMail({
             from: `"Portfolio Contact" <${process.env.EMAIL}>`,
             to: process.env.EMAIL,
