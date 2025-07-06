@@ -17,10 +17,10 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/api/contact", async (req, res) => {
-    res.send(req.body)
-    /*    const { userName, userEmail, userMessage } = req.body;
-    
-        const emailContent = `
+
+    const { name, email, message } = req.body;
+
+    const emailContent = `
         <table style="width: 100%; max-width: 600px; font-family: Arial, sans-serif; border-collapse: collapse; margin: auto; background-color: #ffffff; border: 1px solid #ddd;">
           <tr>
             <td style="background-color: #3B82F6; color: white; padding: 16px; text-align: center;">
@@ -29,11 +29,11 @@ app.post("/api/contact", async (req, res) => {
           </tr>
           <tr>
             <td style="padding: 20px;">
-              <p><strong>Name:</strong> ${userName}</p>
-              <p><strong>Email:</strong> ${userEmail}</p>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
               <p><strong>Message:</strong></p>
               <p style="background-color: #f4f4f4; padding: 15px; border-radius: 6px; font-style: italic;">
-                ${userMessage}
+                ${message}
               </p>
             </td>
           </tr>
@@ -44,20 +44,20 @@ app.post("/api/contact", async (req, res) => {
           </tr>
         </table>
       `;
-    
-        try {
-            await transporter.sendMail({
-                from: `"Portfolio Contact" <${process.env.EMAIL}>`,
-                to: process.env.EMAIL,
-                subject: `New message from ${userName}`,
-                html: emailContent
-            });
-    
-            res.status(200).json({ message: "Email sent successfully!" });
-        } catch (err) {
-            console.error("SendMail Error:", err);
-            res.status(500).json({ error: "Failed to send email" });
-        } */
+
+    try {
+        await transporter.sendMail({
+            from: `"Portfolio Contact" <${process.env.EMAIL}>`,
+            to: process.env.EMAIL,
+            subject: `New message from ${name}`,
+            html: emailContent
+        });
+
+        res.status(200).json({ message: "Email sent successfully!" });
+    } catch (err) {
+        console.error("SendMail Error:", err);
+        res.status(500).json({ error: "Failed to send email" });
+    }
 });
 
 app.get("/", (req, res) => {
